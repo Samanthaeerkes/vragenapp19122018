@@ -1,0 +1,50 @@
+#Changelog
+Alle veranderingen worden gedocumenteerd in dit bestand
+
+##[0.1] - 12/11/2018
+###opleidingskeuzepagina toegevoegd
+- Background toegevoegd
+- Drop down buttons toegevoegd
+- Start button toegevoegd 
+
+##[0.2] - 13/11/2018
+###overzichtpagina toegevoegd
+- Link toegevoegd van start button
+- Background toegevoegd
+- Clickable images toegevoegd
+- Link toegevoegd aan clickable image naar pagina "profiel" en "vragen"
+- icoon toegevoegd aan app
+- splashscreen toegevoegd aan app
+
+##[1.0] - 14/11/2018
+###first commit github
+
+
+##[2.0] - 22/11/2018
+###overzichtpagina toegevoegd
+- APK gemaakt van Applicatie 
+- bootstrap menu is niet werkend 
+- fout oplossen in bootstrap menu
+
+##[2.1] - 26/11/2018
+###overzichtpagina toegevoegd
+- Splashscreen plugin toegevoegd aan phonegap (is alleen nogmaar ondersteund voor windows);
+- versie 2.0 commit gedaan na toevoegen qualifier
+- versie 2.1 commit gedaan na toevoegen GIF bestanden
+- nieuwe preference toegoevoegd commit versie 2.2
+- nieuwe commit versie 2.3 na aanpassing Splash zodat loader ingevoegd kan worden.
+- res bestand naar de rootfolder verplaatst.
+- apk werkt naar behoren en Splash screen doet het zoals het hoort. 
+
+##[2.3] - 26/11/2018
+###Official commit github after solving ticket
+
+##[2.4] - 10/12/2018
+###Aanpassingen profielpagina 
+- comment in config.xml line 16 ---> delete comment to show splash on apk.
+- comment in config.xml line 18 AutoHideSpalshScreen ---> set to false to show spalsh on apk.
+- comment in config.xml line 20 ---> delete comment to show splash on apk.
+- add background to profiel.html
+- add selector to profiel.html
+- add ID- to profiel.html
+- add icon to profiel.html

@@ -1,0 +1,4 @@
+#Wed Dec 19 09:02:13 CET 2018
+base.0=C\:\\Users\\leon\\Desktop\\Projecten\\Examen\\Vragenapp_Versie_1.5\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex

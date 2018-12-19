@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Vragen app",
+  "short_name": "Vragen app",
+  "version": "com.phonegap.helloworld",
+  "description": "Martijn van Schaik",
+  "author": "PhoneGap Team",
+  "icons": [],
+  "start_url": "index.html"
+}

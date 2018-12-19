@@ -1,0 +1,49 @@
+#Changelog
+Alle veranderingen worden gedocumenteerd in dit bestand
+
+##[0.0.1] - 12/11/2018
+###opleidingskeuzepagina toegevoegd
+- Background toegevoegd
+- Drop down buttons toegevoegd
+- Start button toegevoegd 
+
+##[0.0.2] - 13/11/2018
+###overzichtpagina toegevoegd
+- Link toegevoegd van start button
+- Background toegevoegd
+- Clickable images toegevoegd
+- Link toegevoegd aan clickable image naar pagina "profiel" en "vragen"
+- icoon toegevoegd aan app
+- splashscreen toegevoegd aan app
+
+##[0.0.3] - 22/11/2018
+###overzichtpagina toegevoegd
+- APK gemaakt van Applicatie 
+- bootstrap menu is niet werkend 
+- fout oplossen in bootstrap menu
+
+##[0.0.4] - 26/11/2018
+###overzichtpagina toegevoegd
+- Splashscreen plugin toegevoegd aan phonegap (is alleen nogmaar ondersteund voor windows);
+- Code opgeschoond nieuwe qualifier toegevoegd 
+- RES folder verplaatst naar rootfolder. 
+- commit gedaan in phonegap appVragen_27-11-2018v2.0
+- Splash werkt op apk na nieuwe commit. 
+- Testen of GIF ook toegevoegd kan worden. 
+- nieuwe commit gedaan appVragen_27-11-2018v2.1(kan niet)
+- pull request geweigerd vanuit phonegap
+- nieuwe versie gecommit met nieuwe splash.png appVragen_27-11-2018v2.2
+- Splash aangepast zodat er een werkende loader aan toegevoegd kan worden
+- nieuwe commit gedaan in github appVragen_27-11-2018v2.3. 
+- splashscreen werkt
+
+##[0.0.4] - 10/12/2018
+###profiel.html toegevoegd.
+-HTML/CSS profielpagina gemaakt aan de hand van de ontwerpen. 
+
+##[0.0.4] - 11/12/2018
+###profiel.html connectie met database cluster en opleiding ophalen.
+- Test.php aangemaakt in de HTDOCS van xamp met connectie database user-id.
+- 
+
+

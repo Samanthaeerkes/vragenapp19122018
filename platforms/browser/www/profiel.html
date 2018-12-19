@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline' gap:; style-src 'self' 'unsafe-inline'; media-src *" />
+
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" href="css/Bootstrap/bootstrap.min.css">
+    <title>Vragen app</title>
+</head>
+
+<body>
+<div class="container-fluid">
+    <!--- drop down menu cluster-->
+    <div class="col-md-12 col-sm-12 col-xs-12 well" id="bg3">
+        
+        
+        <div class="container col-md-12 col-sm-12 col-xs-12">
+            <div class="rounded float-left profile-button"> </div>
+            <div class="ID-tekst"><p id="tekst-ID"><script type="text/javascript">var deviceId = device.uuid;</script></p>
+                
+                </div> 
+        </div> 
+        
+        
+        <!--SELECTOR-->
+        <div id="profielpaginaSelector" class="container">
+    
+            <div class="form-group col-md-12 col-sm-12 col-lg-12">
+                <label for="sel1" id="sel4"><h5>Cluster:</h5></label>
+                <select class="form-control2 cluster-select" id="sel3">                    
+                </select>
+            </div>
+            
+            <div class="form-group col-md-12 col-sm-12 col-lg-12">
+                <label for="sel1"id="sel4"><h5>Opleiding:</h5></label>
+                <select class="form-control2 opleiding-select" id="sel3">
+                </select>
+                </div>
+            </div> <!--END SELECTOR-->
+        <div class="Button-group">
+                <input type="image" src="img/profiel-verwijderen-button.png" width="40%" height="auto" id="verwijderen">
+                <input type="image" src="img/profiel-bijwerken-button.png" width="40%" height="auto" id="bijwerken">
+            </div>    
+        
+        
+            </div> <!--END BG3-->
+        </div><!--END CONTAINER FLUID-->
+
+<!--    <script src="dist/jquery.slim.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="dist/umd/popper.min.js"></script>
+    <script src="js/Bootstrap/bootstrap.min.js"></script>
+    
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+    <script type="text/javascript" src="js/profiepagina.js"></script>
+    <script type="text/javascript">        
+        //connection database via server to get deviceId
+        function getSelectedOpleiding(deviceId) {
+            return $.ajax({
+                type: "GET", url: "http://leondekraker.nl/vragenapp/afhandel-profiel/?deviceId=" + deviceId,
+                async: false
+            }).responseText;
+        }
+        //connection database via server to get opleidingenId
+        function getSelectedCluster(opleidingId) {
+            return $.ajax({
+                type: "GET", url: "http://leondekraker.nl/vragenapp/afhandel-profiel/?clusterForOpleidingId=" + opleidingId,
+                async: false
+            }).responseText;
+        }
+        //connection database via server to get ClusterId
+        function loadClusters() {
+             return $.ajax({
+                type: "GET", url: "http://leondekraker.nl/vragenapp/afhandel-profiel/?dropdown=clusters",
+                async: false
+            }).responseText;
+        }
+        //connection database via server to select clusterId
+        function loadOpleidingen(selectedClusterId) {
+            return $.ajax({
+                type: "GET", url: "http://leondekraker.nl/vragenapp/afhandel-profiel/?dropdown=opleidingen&clusterId=" + selectedClusterId,
+                async: false
+            }).responseText;
+        }
+        
+        //connection database via server to get opleidingenId
+        function setOpleidingenOptions(opleidingen) {
+            $.each(opleidingen, function(key, value) {
+                $('.opleiding-select').append('<option value=' + key + '>' + value + '</option>');
+            });
+        }
+        //connection database via server to select opleidingenId
+        function setClustersOptions(clusters) {
+            $.each(clusters, function(key, value) {
+                $('.cluster-select').append('<option value=' + key + '>' + value + '</option>');
+            });
+        }
+        
+        function updateSelectedOpleiding(deviceId, opleidingId) {
+            var data = {deviceId: deviceId, opleidingId: opleidingId};
+            $.ajax({
+                type: "POST",
+                url: "http://leondekraker.nl/vragenapp/afhandel-profiel/",
+                data: data
+            });
+        }
+        
+        function deleteProfile(deviceId) {
+            var data = {deviceId: deviceId};
+            $.ajax({
+                type: "POST",
+                url: "http://leondekraker.nl/vragenapp/afhandel-profiel/",
+                data: data
+            });
+        }
+
+        var selectedOpleidingId = getSelectedOpleiding(deviceId);
+        var selectedClusterId = getSelectedCluster(selectedOpleidingId);
+        //get all the info from database and put it in JSON format
+        var clusters = JSON.parse(loadClusters());
+        var opleidingen = JSON.parse(loadOpleidingen(selectedClusterId));
+        //when you change the cluster or opleiding the dropdown changes. 
+        $('.cluster-select').on('change', function() {
+            $('.opleiding-select option').remove();
+            // get information from database and put it in JSON format
+            opleidingen = loadOpleidingen(this.value)
+            setOpleidingenOptions(JSON.parse(opleidingen));
+        });
+        
+        //set nieuw opleiding en cluster. 
+        setClustersOptions(clusters);
+        setOpleidingenOptions(opleidingen);
+        $('.cluster-select').val(selectedClusterId);
+        $('.opleiding-select').val(selectedOpleidingId);
+        
+        $('#bijwerken').on('click', function() {
+            var newOpleiding = $('.opleiding-select').val();
+            updateSelectedOpleiding(deviceId, newOpleiding);
+        });
+        
+        $('#verwijderen').on('click', function() {
+            deleteProfile(deviceId);
+        });
+        
+    </script>
+</body>
+</html>
