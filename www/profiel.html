@@ -129,7 +129,7 @@ under the License.
                     type: "POST",
                     url: "http://leondekraker.nl/vragenapp/afhandel-profiel/",
                     data: data
-            }
+            });
             //verwijder de geselecteerde opleiding vanuit afhandel.php
             function deleteProfile(deviceId) {
                 var data = {deviceId: deviceId};
@@ -137,7 +137,7 @@ under the License.
                     type: "POST",
                     url: "http://leondekraker.nl/vragenapp/afhandel-profiel/",
                     data: data
-            }
+            });
             // Als het device id opgehaald is, show dan de geselecteerde opleiding en cluster
             document.addEventListener("deviceready", ready, false);
             function ready() {
@@ -152,7 +152,7 @@ under the License.
                 $('.cluster-select').on('change', function() {
                     $('.opleiding-select option').remove();
                     // get information from database and put it in JSON format
-                    opleidingen = loadOpleidingen(this.value)
+                    opleidingen = loadOpleidingen(this.value);
                     setOpleidingenOptions(JSON.parse(opleidingen));
                 });
 
