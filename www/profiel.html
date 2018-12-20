@@ -128,7 +128,9 @@ under the License.
                 $.ajax({
                     type: "POST",
                     url: "http://leondekraker.nl/vragenapp/afhandel-profiel/",
-                    data: data
+                    data: data,
+                    success: function () {
+            alert("Je profiel is bijgewerkt, bedankt!");
                 });
             }
             //verwijder de geselecteerde opleiding vanuit afhandel.php
@@ -137,7 +139,9 @@ under the License.
                 $.ajax({
                     type: "POST",
                     url: "http://leondekraker.nl/vragenapp/afhandel-profiel/",
-                    data: data
+                    data: data,success: function () {
+            alert("Je profiel is verwijderd, je kunt geen vragen meer beantwoorden!");
+                    
                 });
             }
             // Als het device id opgehaald is, show dan de geselecteerde opleiding en cluster
